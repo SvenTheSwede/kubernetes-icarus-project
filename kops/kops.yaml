@@ -1,0 +1,224 @@
+apiVersion: kops.k8s.io/v1alpha2
+kind: Cluster
+metadata:
+  creationTimestamp: null
+  name: kops.k8s.icarus-project.net
+spec:
+  api:
+    loadBalancer:
+      class: Network
+      type: Internal
+  authorization:
+    rbac: {}
+  channel: stable
+  cloudProvider: aws
+  containerRuntime: containerd
+  configBase: s3://kops-state-fffggfam/kops.k8s.icarus-project.net
+  dnsZone: Z0345650N1M0UIM5GJXZ
+  etcdClusters:
+  - cpuRequest: 200m
+    etcdMembers:
+    - encryptedVolume: true
+      instanceGroup: control-plane-eu-north-1a
+      name: a
+    - encryptedVolume: true
+      instanceGroup: control-plane-eu-north-1b
+      name: b
+    - encryptedVolume: true
+      instanceGroup: control-plane-eu-north-1c
+      name: c
+    manager:
+      backupRetentionDays: 90
+    memoryRequest: 100Mi
+    name: main
+  - cpuRequest: 100m
+    etcdMembers:
+    - encryptedVolume: true
+      instanceGroup: control-plane-eu-north-1a
+      name: a
+    - encryptedVolume: true
+      instanceGroup: control-plane-eu-north-1b
+      name: b
+    - encryptedVolume: true
+      instanceGroup: control-plane-eu-north-1c
+      name: c
+    manager:
+      backupRetentionDays: 90
+    memoryRequest: 100Mi
+    name: events
+  iam:
+    allowContainerRegistry: true
+    legacy: false
+    useServiceAccountExternalPermissions: true
+  serviceAccountIssuerDiscovery:
+    discoveryStore: s3://icarus-project-provider
+  enableAWSOIDCProvider: true
+  kubeProxy:
+    enabled: false
+  kubelet:
+    anonymousAuth: false
+  kubernetesApiAccess:
+  - 172.31.0.0/16
+  kubernetesVersion: 1.31.7
+  networkCIDR: 172.31.0.0/16
+  networkID: vpc-0d1c11fa42d21a4d9
+  networking:
+  nonMasqueradeCIDR: 100.64.0.0/10
+  sshAccess:
+  - 172.31.0.0/16
+  subnets:
+  - cidr: 172.31.60.0/27
+    id: subnet-0dc242364cf1de5f4
+    name: eu-north-1a
+    type: Private
+    zone: eu-north-1a
+    egress: nat-0bf7c6b856a824fd5
+  - cidr: 172.31.63.0/27
+    id: subnet-0ef67755f61c90bc7
+    name: eu-north-1b
+    type: Private
+    zone: eu-north-1b
+    egress: nat-0a45471e3363cd858
+  - cidr: 172.31.65.0/27
+    id: subnet-0b99addcce6589bba
+    name: eu-north-1c
+    type: Private
+    zone: eu-north-1c
+    egress: nat-0991b62b5d5b4a2d2
+  - cidr: 172.31.50.0/27
+    id: subnet-0806402f7b11e1aa8
+    name: utility-eu-north-1a
+    type: Utility
+    zone: eu-north-1a
+  - cidr: 172.31.52.0/27
+    id: subnet-06408df9385b8cd93
+    name: utility-eu-north-1b
+    type: Utility
+    zone: eu-north-1b
+  - cidr: 172.31.53.0/27
+    id: subnet-09b695d1fd006f80c
+    name: utility-eu-north-1c
+    type: Utility
+    zone: eu-north-1c
+  topology:
+    dns:
+      type: Private
+  certManager:
+    enabled: true
+  metricsServer:
+    enabled: true
+    insecure: false
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+  name: control-plane-eu-north-1a
+spec:
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Master
+  subnets:
+  - eu-north-1a
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+  name: control-plane-eu-north-1b
+spec:
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Master
+  subnets:
+  - eu-north-1b
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+  name: control-plane-eu-north-1c
+spec:
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Master
+  subnets:
+  - eu-north-1c
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+  name: nodes-eu-north-1a
+spec:
+  instanceMetadata:
+    httpTokens: optional
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Node
+  subnets:
+  - eu-north-1a
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+  name: nodes-eu-north-1b
+spec:
+  instanceMetadata:
+    httpTokens: optional
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Node
+  subnets:
+  - eu-north-1b
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+  name: nodes-eu-north-1c
+spec:
+  instanceMetadata:
+    httpTokens: optional
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Node
+  subnets:
+  - eu-north-1c
