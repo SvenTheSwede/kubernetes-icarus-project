@@ -79,7 +79,7 @@ spec:
     type: Private
     zone: eu-north-1b
     egress: nat-
-  - cidr: 172.31.65.0/27
+  - cidr: 
     id: subnet-
     name: eu-north-1c
     type: Private
