@@ -2,7 +2,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: Cluster
 metadata:
   creationTimestamp: null
-  name: kops.k8s.icarus-project.net
+  name: 
 spec:
   api:
     loadBalancer:
@@ -13,7 +13,7 @@ spec:
   channel: stable
   cloudProvider: aws
   containerRuntime: containerd
-  configBase: s3://kops-state-fffggfam/kops.k8s.icarus-project.net
+  configBase: s3://k
   dnsZone: Z0345650N1M0UIM5GJXZ
   etcdClusters:
   - cpuRequest: 200m
@@ -51,52 +51,52 @@ spec:
     legacy: false
     useServiceAccountExternalPermissions: true
   serviceAccountIssuerDiscovery:
-    discoveryStore: s3://icarus-project-provider
+    discoveryStore: s3://
   enableAWSOIDCProvider: true
   kubeProxy:
     enabled: false
   kubelet:
     anonymousAuth: false
   kubernetesApiAccess:
-  - 172.31.0.0/16
+  - 172.
   kubernetesVersion: 1.31.7
-  networkCIDR: 172.31.0.0/16
-  networkID: vpc-0d1c11fa42d21a4d9
+  networkCIDR: 172
+  networkID: vpc-
   networking:
   nonMasqueradeCIDR: 100.64.0.0/10
   sshAccess:
-  - 172.31.0.0/16
+  - 172
   subnets:
-  - cidr: 172.31.60.0/27
-    id: subnet-0dc242364cf1de5f4
+  - cidr: 
+    id: subnet-
     name: eu-north-1a
     type: Private
     zone: eu-north-1a
-    egress: nat-0bf7c6b856a824fd5
-  - cidr: 172.31.63.0/27
-    id: subnet-0ef67755f61c90bc7
+    egress: nat-
+  - cidr: 
+    id: subnet-
     name: eu-north-1b
     type: Private
     zone: eu-north-1b
-    egress: nat-0a45471e3363cd858
+    egress: nat-
   - cidr: 172.31.65.0/27
-    id: subnet-0b99addcce6589bba
+    id: subnet-
     name: eu-north-1c
     type: Private
     zone: eu-north-1c
-    egress: nat-0991b62b5d5b4a2d2
-  - cidr: 172.31.50.0/27
-    id: subnet-0806402f7b11e1aa8
+    egress: nat-
+  - cidr:
+    id: subnet-
     name: utility-eu-north-1a
     type: Utility
     zone: eu-north-1a
-  - cidr: 172.31.52.0/27
-    id: subnet-06408df9385b8cd93
+  - cidr: 
+    id: subnet-
     name: utility-eu-north-1b
     type: Utility
     zone: eu-north-1b
-  - cidr: 172.31.53.0/27
-    id: subnet-09b695d1fd006f80c
+  - cidr: 
+    id: subnet-
     name: utility-eu-north-1c
     type: Utility
     zone: eu-north-1c
@@ -116,7 +116,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+    kops.k8s.io/cluster: kops.k8s.
   name: control-plane-eu-north-1a
 spec:
   image: ami-0c1ac8a41498c1a9c
@@ -134,7 +134,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+    kops.k8s.io/cluster: kops.k8s.
   name: control-plane-eu-north-1b
 spec:
   image: ami-0c1ac8a41498c1a9c
@@ -152,7 +152,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+    kops.k8s.io/cluster: kops.k8s.
   name: control-plane-eu-north-1c
 spec:
   image: ami-0c1ac8a41498c1a9c
@@ -170,7 +170,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+    kops.k8s.io/cluster: kops.k8s.
   name: nodes-eu-north-1a
 spec:
   instanceMetadata:
@@ -190,7 +190,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+    kops.k8s.io/cluster: kops.k8s.
   name: nodes-eu-north-1b
 spec:
   instanceMetadata:
@@ -210,7 +210,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: kops.k8s.icarus-project.net
+    kops.k8s.io/cluster: kops.k8s.
   name: nodes-eu-north-1c
 spec:
   instanceMetadata:
