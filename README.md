@@ -12,7 +12,10 @@ kops create -f kops.yaml --name name of cluster --state state bucket
 add sshkey using kops command 
 kops update cluster--name name --state bucket --yes
 
+if using pre existing Internet gateway add --life-cycleovwrride InternetGateway option to update. check the docs.
+
 kops export to get kube config 
 
+if this doesn't work for you then RTFM. 
 
 
