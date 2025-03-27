@@ -58,12 +58,12 @@ spec:
   kubelet:
     anonymousAuth: false
   kubernetesApiAccess:
-  - 172.
+  - 172
   kubernetesVersion: 1.31.7
-  networkCIDR: 172
+  networkCIDR: 
   networkID: vpc-
   networking:
-  nonMasqueradeCIDR: 100.64.0.0/10
+  nonMasqueradeCIDR: 10.10.0.0/16
   sshAccess:
   - 172
   subnets:
