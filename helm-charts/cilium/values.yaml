@@ -53,7 +53,7 @@ iptablesRandomFully: false
 # @default -- `"~/.kube/config"`
 kubeConfigPath: ""
 # -- (string) Kubernetes service host - use "auto" for automatic lookup from the cluster-info ConfigMap
-k8sServiceHost: "api-kops-k8s-icarus-proje-mtqlig-937c0800734ccb0c.elb.eu-north-1.amazonaws.com"
+k8sServiceHost: "api-kops-k8s    eu-north-1.amazonaws.com"
 # @schema
 # type: [string, integer]
 # @schema
