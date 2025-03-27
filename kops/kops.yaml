@@ -13,8 +13,8 @@ spec:
   channel: stable
   cloudProvider: aws
   containerRuntime: containerd
-  configBase: s3://k
-  dnsZone: Z0345650N1M0UIM5GJXZ
+  configBase: s3://
+  dnsZone: 
   etcdClusters:
   - cpuRequest: 200m
     etcdMembers:
