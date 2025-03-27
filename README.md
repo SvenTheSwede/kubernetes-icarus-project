@@ -5,6 +5,8 @@ The cluster is on the subdomain hosted zone.
 
 ami is Ubuntu but use whatever you want as long as it's supported by kops. Flatcar is good but aws change for per hour on its usage if used from the catalogue.  
 
+OIDC provider requires an additional bucket. Don't use the same as the state one.
+
 create IAM user as per docs and s3 state bucket 
 
 create 3 public and private subnets 
