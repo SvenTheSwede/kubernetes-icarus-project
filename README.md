@@ -1,11 +1,12 @@
 # kubernetes-icarus-project
 
+
 Dns used is 2 hosted zones. 
 The cluster is on the subdomain hosted zone. 
 
 ami is Ubuntu but use whatever you want as long as it's supported by kops. Flatcar is good but aws change for per hour on its usage if used from the catalogue.  
 
-OIDC provider requires an additional bucket. Don't use the same as the state one.
+OIDC provider requires an additional bucket. Don't use the same as the state one. if using oidc add podIdentitwebhook enabled: true. it requires cert manager. 
 
 create IAM user as per docs and s3 state bucket 
 
