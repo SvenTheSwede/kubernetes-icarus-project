@@ -9,6 +9,8 @@ ami is Ubuntu but use whatever you want as long as it's supported by kops. Flatc
 
 OIDC provider requires an additional bucket. Don't use the same as the state one. if using oidc add podIdentitwebhook enabled: true. it requires cert manager. 
 
+Nodes use IMDSv1.  defined by httptoken optional as part of.the instanceGroup definition.
+
 create IAM user as per docs and s3 state bucket 
 
 create 3 public and private subnets 
@@ -24,6 +26,10 @@ if using pre existing Internet gateway add --life-cycleovwrride InternetGateway 
 
 kops export to get kube config 
 
+ Cilium requires the api address of the api load balance k8sApihost 
+
+ aws load balancer controller needs your vpc id and service account stuff if using oidc. if not using oidc add additional policies to nodes and make them all IMDSv1.
+ 
 if this doesn't work for you then RTFM. 
 
 
