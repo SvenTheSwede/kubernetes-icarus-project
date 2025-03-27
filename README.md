@@ -1,5 +1,9 @@
 # kubernetes-icarus-project
 
+Dns used is 2 hosted zones. 
+The cluster is on the subdomain hosted zone. 
+
+ami is Ubuntu but use whatever you want as long as it's supported by kops. Flatcar is good but aws change for per hour on its usage if used from the catalogue.  
 
 create IAM user as per docs and s3 state bucket 
 
