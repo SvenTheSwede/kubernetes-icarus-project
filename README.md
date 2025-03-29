@@ -14,9 +14,12 @@ Nodes use IMDSv1.  defined by httptoken optional as part of.the instanceGroup de
 Terraform for the kops basics are in this repo. 
 
 Check status of terraform  network directory in this repo if you require networking. 
-Otherwise create:
-1 3 public and private subnets
+Otherwise create
+
+ 3 public and private subnets
+ 
 2 3 Nat Gateways and EIPS on the public networks.
+
 3  Change routing of private networks and add a route pointing to your nat gateway.
 ```
 0.0.0.0/0 nat-gw11234555
