@@ -29,5 +29,7 @@ resource "aws_subnet" "public" {
 
   tags {
      Name = "public"-{each.key} 
+     SubnetType = "Utility"
+
   }
 }
