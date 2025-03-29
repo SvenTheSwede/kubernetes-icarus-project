@@ -20,7 +20,7 @@ Otherwise create
  
 2 3 Nat Gateways and EIPS on the public networks.
 
-3  Change routing of private networks and add a route pointing to your nat gateway.
+3  Change routing of private networks by removing them from the main routing table and create 3 news ones and add a route pointing to your nat gateway.
 ```
 0.0.0.0/0 nat-gw11234555
 ```
@@ -38,7 +38,7 @@ export BUCKET=s3://your-state-bucket
 update  kops.yaml file with your own details 
 
 ```
-kops create -f kops.yaml --name name of cluster --state state bucket
+kops create -f kops.yaml --name $NAME --state $BUCKET
 ```
 
 add sshkey using kops command 
@@ -49,12 +49,12 @@ kops create sshpublickey --name your-cluster-nane --state s3://your-s3-state-buc
 
 The kops update will create all the necessary infra and the cluster.  If not using a pre existing internet gateway.
 ```
-kops update cluster--name name --state bucket --l
+kops update cluster--name $NAME --state $BUCKET --yes
 ```
 
 if using pre existing Internet gateway.
 ```
-kops update cluster--name name --state bucket --lifecycle-overrides InternetGateway=ExistsAndWarnIfChanges--yes
+kops update cluster--name $NAME --state $BUCKET --lifecycle-overrides InternetGateway=ExistsAndWarnIfChanges--yes
 ```
 
 Export the kube config. This will eventually expire though.
@@ -64,6 +64,11 @@ kops export kubeconfig --name $NAME --state $BUCKET --admin
 Validate the cluster
 ```
 kops validate cluster --name $NAME --state $BUCKET  --wait 5m
+```
+
+To delete the cluster
+```
+kops delete cluster --name $NAME --state $BUCKET --yes
 ```
 
  
