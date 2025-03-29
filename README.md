@@ -63,8 +63,5 @@ Validate the cluster
 kops validate cluster --name $NAME --state $BUCKET  --wait 5m
 ```
 
- Cilium requires the api address of the api load balance k8sApihost  The nodes won't be in a ready state till you install this. 
-
- aws load balancer controller needs your vpc id and service account stuff if using oidc. if not using oidc add additional policies to hosts and make them all IMDSv1.
  
 if this doesn't work for you then RTFM. 
