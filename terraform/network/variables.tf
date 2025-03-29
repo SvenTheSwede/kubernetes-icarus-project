@@ -30,14 +30,13 @@ variable "subnets" {
    EOF 
 
   validation {
-    error_message = "Invalid key in public subnets. Valid options include: \"cidrs\", \"netmask\", \"name_prefix\", \"connect_to_igw\", \"nat_gateway_configuration\",  \"assign_ipv6_cidr\",  \"tags\"."
+    error_message = "Invalid key in public subnets. Valid options include: \"cidrs\", \"netmask\", \"name_prefix\", \"connect_to_igw\", \"nat_gateway_configuration\",   \"tags\"."
     condition = length(setsubtract(keys(try(var.subnets.public, {})), [
       "cidrs",
       "netmask",
       "name_prefix",
       "connect_to_igw",
       "nat_gateway_configuration",
-      "ipv6_native",
       "map_public_ip_on_launch",
       "tags"
     ])) == 0
