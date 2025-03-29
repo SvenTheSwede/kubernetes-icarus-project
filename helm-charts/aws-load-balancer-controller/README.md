@@ -11,7 +11,7 @@ Create private key
 
     openssl genrsa 2048 > my-private-key.pem
     
-Generate cert using key and answer all the questions. common name MUST be .amazon.com
+Generate cert using key and answer all the questions. common name MUST be .amazonaws.com
 
     openssl req -new -x509 -nodes -sha256 -days 365 -key my-private-key.pem -outform PEM -out my-certificate.pem
 
