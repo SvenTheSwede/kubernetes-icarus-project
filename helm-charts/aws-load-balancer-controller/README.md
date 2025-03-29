@@ -8,6 +8,7 @@ To create a https listener on you ALB you'll need a cert.  To create a self sign
 
 
 Create private key
+
     ```bash
     $> openssl genrsa 2048 > my-private-key.pem
     ``
