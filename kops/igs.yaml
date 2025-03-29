@@ -1,0 +1,156 @@
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.your-domain.net
+  name: control-plane-eu-north-1a
+spec:
+  instanceMetadata:
+    httpPutResponseHopLimit: 3
+    httpTokens: optional
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Master
+  subnets:
+  - eu-north-1a
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.your-domain.net
+  name: control-plane-eu-north-1b
+spec:
+  instanceMetadata:
+    httpPutResponseHopLimit: 3
+    httpTokens: optional
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Master
+  subnets:
+  - eu-north-1b
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.your-domain.net
+  name: control-plane-eu-north-1c
+spec:
+  instanceMetadata:
+    httpPutResponseHopLimit: 3
+    httpTokens: optional
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Master
+  subnets:
+  - eu-north-1c
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.your-domain.net
+  name: nodes-eu-north-1a
+spec:
+  instanceMetadata:
+    httpPutResponseHopLimit: 3
+    httpTokens: optional
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Node
+  subnets:
+  - eu-north-1a
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.your-domain.net
+  name: nodes-eu-north-1b
+spec:
+  instanceMetadata:
+    httpPutResponseHopLimit: 3
+    httpTokens: optional
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Node
+  subnets:
+  - eu-north-1b
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.your-domain.net
+  name: nodes-eu-north-1c
+spec:
+  instanceMetadata:
+    httpPutResponseHopLimit: 3
+    httpTokens: optional
+  image: ami-0c1ac8a41498c1a9c
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Node
+  subnets:
+  - eu-north-1c
+
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.your-domain.net
+  name: spot-nodes-eu-north-1
+spec:
+  instanceMetadata:
+    httpPutResponseHopLimit: 3
+    httpTokens: optional
+  image: ami-0c1ac8a41498c1a9c
+  mixedInstancesPolicy:
+    instanceRequirements:
+      cpu:
+        min: "2"
+        max: "16"
+      memory:
+        min: "2G"
+    onDemandAboveBase: 0
+    onDemandBase: 0
+    spotAllocationStrategy: capacity-optimized
+  min: 0
+  max: 3
+  role: Node
+  subnets:
+  - eu-north-1a
+  - eu-north-1b
+  - eu-north-1c
+
+

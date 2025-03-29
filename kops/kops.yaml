@@ -108,6 +108,18 @@ spec:
   metricsServer:
     enabled: true
     insecure: false
+  clusterAutoscaler:
+    enabled: true
+    expander: least-waste
+    awsUseStaticInstanceList: false
+    scaleDownDelayAfterAdd: 10m0s
+    scaleDownUnneededTime: 5m0s
+    scaleDownUnreadyTime: 10m0s
+  nodeTerminationHandler:
+    enabled: true
+    enableSQSTerminationDraining: true
+    managedASGTag: "aws-node-termination-handler/managed"
+
 
 ---
 
@@ -222,3 +234,35 @@ spec:
   role: Node
   subnets:
   - eu-north-1c
+
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: kops.k8s.your-domain.net
+  name: spot-nodes-eu-north-1
+spec:
+  instanceMetadata:
+    httpPutResponseHopLimit: 3
+    httpTokens: optional
+  image: ami-0c1ac8a41498c1a9c
+  mixedInstancesPolicy:
+    instanceRequirements:
+      cpu:
+        min: "2"
+        max: "16"
+      memory:
+        min: "2G"
+    onDemandAboveBase: 0
+    onDemandBase: 0
+    spotAllocationStrategy: capacity-optimized
+  min: 0
+  max: 3
+  role: Node
+  subnets:
+  - eu-north-1a
+  - eu-north-1b
+  - eu-north-1c
+
