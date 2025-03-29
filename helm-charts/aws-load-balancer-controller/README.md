@@ -9,18 +9,14 @@ To create a https listener on you ALB you'll need a cert.  To create a self sign
 
 Create private key
 
-    ```bash
-    $> openssl genrsa 2048 > my-private-key.pem
-    ``
+    openssl genrsa 2048 > my-private-key.pem
     
 Generate cert using key
 
-    ```bash
-    $> openssl req -new -x509 -nodes -sha256 -days 365 -key my-private-key.pem -outform PEM -out my-certificate.pem
-    ```
+    openssl req -new -x509 -nodes -sha256 -days 365 -key my-private-key.pem -outform PEM -out my-certificate.pem
+
     
 Add it into AWS ACM
 
-    ```bash
-    $> aws acm import-certificate --certificate file://my-certificate.pem --private-key file://my-private-key.pem
-    ```
+     aws acm import-certificate --certificate file://my-certificate.pem --private-key file://my-private-key.pem
+
