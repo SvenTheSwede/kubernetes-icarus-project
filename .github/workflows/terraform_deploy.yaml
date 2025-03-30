@@ -28,15 +28,13 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID}}
           aws-secret-access-key: ${{ secret.AWS_SECRET_KEY_ID }}
 
-      # Runs a single command using the runners shell
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
 
-      # Runs a set of commands using the runners shell
       - name: Terraform plan
         id: TerraformPlan
-        run: 
+        run: | 
           terraform init
           terraform plan -var='example_api_key=${{ secrets.EXAMPLE_API_KEY }}'
    
