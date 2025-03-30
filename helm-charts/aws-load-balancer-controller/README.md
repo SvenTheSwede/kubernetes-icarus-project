@@ -4,7 +4,7 @@ If OIDC enabled make sure the service account is enabled with the role arn of th
 
 Nodes may need addional IAM polices attached to them. AWSLoadBalancer full access plus some AWSEc2 permissions. 
 
-To create a https listener on you ALB you'll need a cert.  To create a self signed cert use openssl and add it into AWS ACM.  Use the cert arn in the values.yaml file
+To create a https listener on you ALB you'll need a cert.  To create a self signed cert use openssl and add it into AWS ACM.  Use the cert arn in the values.yaml file.  Ensure the user has the correct permisions to do this.  If you get an invalid base error try file instead of fileb.  This works with the current version of aws cli
 
 
 Create private key
@@ -18,5 +18,5 @@ Generate cert using key and answer all the questions. common name MUST be .amazo
     
 Add it into AWS ACM
 
-     aws acm import-certificate --certificate file://my-certificate.pem --private-key file://my-private-key.pem
+     aws acm import-certificate --certificate fileb://my-certificate.pem --private-key fileb://my-private-key.pem
 
