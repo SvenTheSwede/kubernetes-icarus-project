@@ -110,11 +110,6 @@ spec:
     insecure: false
   clusterAutoscaler:
     enabled: true
-    expander: least-waste
-    awsUseStaticInstanceList: false
-    scaleDownDelayAfterAdd: 10m0s
-    scaleDownUnneededTime: 5m0s
-    scaleDownUnreadyTime: 10m0s
   nodeTerminationHandler:
     enabled: true
     enableSQSTerminationDraining: true
