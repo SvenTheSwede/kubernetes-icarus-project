@@ -64,7 +64,7 @@ Validate the cluster
 kops validate cluster --name $NAME --state $BUCKET  --wait 5m
 ```
 
-Update the cilium values file and add the api address under k8sServiceHost or use --set k8sapihost and install cilium. The value can be found in kube config TLS server
+Update the cilium values file and add the api address under k8sServiceHost or use --set k8sapihost and install cilium. The value can be found in kube config TLS server,  The nodes will be in a NotReady state till you do this.  Once installed the nodes will be in a ready state.
 ```
 helm install cilium cilium/cilium -f values.yaml -n kube-system
 ```
