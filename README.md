@@ -1,6 +1,6 @@
 # kubernetes-icarus-project
 
-to do. tidy this abomination up
+
 
 Dns used is 2 hosted zones. 
 The cluster is on the subdomain hosted zone. 
