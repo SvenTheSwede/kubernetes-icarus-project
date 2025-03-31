@@ -20,11 +20,11 @@ resource "aws_iam_role" "aws_lb_ctl" {
   assume_role_policy = data.aws_iam_policy_document.aws_lb_ctl.json
   name               = "aws_lb_ctl"
 
-  depends_on = [aws_iam_openid_connect_provider.eks]
+  depends_on = [aws_iam_openid_connect_provider]
 }
 
 resource "aws_iam_role_policy_attachment" "aws_lb_ctl" {
-  role       = aws_iam_role.eks_pods.name
+  role       = aws_iam_role.aws_lb.ctl.name
   count      = "${length(var.iam_policy_arn)}"
   policy_arn = "${var.iam_policy_arn[count.index]}"
   depends_on = [aws_iam_role.aws_lb_ctl]
