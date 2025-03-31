@@ -53,7 +53,7 @@ iptablesRandomFully: false
 # @default -- `"~/.kube/config"`
 kubeConfigPath: ""
 # -- (string) Kubernetes service host - use "auto" for automatic lookup from the cluster-info ConfigMap
-k8sServiceHost: "api-kops-k8s    eu-north-1.amazonaws.com"
+k8sServiceHost: ""
 # @schema
 # type: [string, integer]
 # @schema
@@ -135,7 +135,7 @@ serviceAccounts:
     automount: true
     annotations: {}
   envoy:
-    create: true
+    create: false
     name: cilium-envoy
     automount: true
     annotations: {}
@@ -828,13 +828,13 @@ ciliumEndpointSlice:
 envoyConfig:
   # -- Enable CiliumEnvoyConfig CRD
   # CiliumEnvoyConfig CRD can also be implicitly enabled by other options.
-  enabled: true
+  enabled: false
   # -- SecretsNamespace is the namespace in which envoy SDS will retrieve secrets from.
   secretsNamespace:
     # -- Create secrets namespace for CiliumEnvoyConfig CRDs.
     create: true
     # -- The name of the secret namespace to which Cilium agents are given read access.
-    name: cilium-secrets
+    name: cilium
   # -- Interval in which an attempt is made to reconcile failed EnvoyConfigs. If the duration is zero, the retry is deactivated.
   retryInterval: 15s
 ingressController:
@@ -869,7 +869,7 @@ ingressController:
   # -- SecretsNamespace is the namespace in which envoy SDS will retrieve TLS secrets from.
   secretsNamespace:
     # -- Create secrets namespace for Ingress.
-    create: true
+    create: false
     # -- Name of Ingress secret namespace.
     name: cilium-secrets
     # -- Enable secret sync, which will make sure all TLS secrets used by Ingress are synced to secretsNamespace.name.
