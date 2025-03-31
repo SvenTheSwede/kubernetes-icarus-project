@@ -66,6 +66,36 @@ Validate the cluster
 kops validate cluster --name $NAME --state $BUCKET  --wait 5m
 ```
 
+Update the cilium values file and add the api address under k8sapihost or use --set k8sapihost and install cilium 
+```
+helm install cilium cilium/cilium -f values.yaml -n kube-system
+```
+OR
+```
+helm install cilium cilium/cilium -f values.yaml -n kube-system --set k8sapihost = "Your API LB ADDRESS"
+```
+Verify the installation
+```
+cilium status
+```
+
+Once Cilium is install edit the cluster config and add
+
+```
+podIdentityWebhook:
+  enabled: true
+```
+
+```
+kops edit cluster --name $NAME --state $BUCKET
+
+
+kops update cluster--name $NAME --state $BUCKET --lifecycle-overrides InternetGateway=ExistsAndWarnIfChanges--yes
+```
+
+The cluster should now be ready to install AWS load balancer controller.  
+
+
 To delete the cluster
 ```
 kops delete cluster --name $NAME --state $BUCKET --yes
