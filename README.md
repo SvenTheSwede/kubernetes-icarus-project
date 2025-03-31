@@ -75,6 +75,30 @@ helm install cilium cilium/cilium -f values.yaml -n kube-system --set k8sService
 Verify the installation
 ```
 cilium status
+
+cilium status
+    /¯¯\
+ /¯¯\__/¯¯\    Cilium:             OK                                                                                                                                                                                                      
+ \__/¯¯\__/    Operator:           OK
+ /¯¯\__/¯¯\    Envoy DaemonSet:    2 errors
+ \__/¯¯\__/    Hubble Relay:       disabled
+    \__/       ClusterMesh:        disabled
+
+DaemonSet              cilium                   Desired: 6, Ready: 6/6, Available: 6/6
+DaemonSet              cilium-envoy             Desired: 6, Unavailable: 6/6
+Deployment             cilium-operator          Desired: 2, Ready: 2/2, Available: 2/2
+Containers:            cilium                   Running: 6
+                       cilium-envoy             
+                       cilium-operator          Running: 2
+                       clustermesh-apiserver    
+                       hubble-relay             
+Cluster Pods:          22/22 managed by Cilium
+Helm chart version:    1.17.2
+Image versions         cilium             quay.io/cilium/cilium:v1.17.0@sha256:51f21bdd003c3975b5aaaf41bd21aee23cc08f44efaa27effc91c621bc9d8b1d: 6
+                       cilium-operator    quay.io/cilium/operator-generic:v1.17.0@sha256:1ce5a5a287166fc70b6a5ced3990aaa442496242d1d4930b5a3125e44cccdca8: 2
+Errors:                cilium-envoy       cilium-envoy    6 pods of DaemonSet cilium-envoy are not ready
+                       cilium-envoy       cilium-envoy    daemonset cilium-envoy is rolling out - 0 out of 6 pods updated
+
 ```
 
 Once Cilium is install edit the cluster config and add
