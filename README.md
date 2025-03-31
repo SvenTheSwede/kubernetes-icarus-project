@@ -64,13 +64,13 @@ Validate the cluster
 kops validate cluster --name $NAME --state $BUCKET  --wait 5m
 ```
 
-Update the cilium values file and add the api address under k8sapihost or use --set k8sapihost and install cilium 
+Update the cilium values file and add the api address under k8sServiceHost or use --set k8sapihost and install cilium. The value can be found in kube config TLS server
 ```
 helm install cilium cilium/cilium -f values.yaml -n kube-system
 ```
 OR
 ```
-helm install cilium cilium/cilium -f values.yaml -n kube-system --set k8sapihost = "Your API LB ADDRESS"
+helm install cilium cilium/cilium -f values.yaml -n kube-system --set k8sServiceHost: = "Your TLS server ADDRESS"
 ```
 Verify the installation
 ```
