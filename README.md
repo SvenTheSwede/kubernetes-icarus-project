@@ -9,8 +9,6 @@ ami is Ubuntu but use whatever you want as long as it's supported by kops. Flatc
 
 OIDC provider requires an additional bucket. Don't use the same as the state one. if using oidc add podIdentitwebhook enabled: true. it requires cert manager. 
 
-Nodes use IMDSv1.  defined by httptoken optional as part of.the instanceGroup definition.
-
 Terraform for the kops basics are in this repo. 
 
 Check status of terraform  network directory in this repo if you require networking. 
