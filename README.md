@@ -76,7 +76,7 @@ Verify the installation
 ```
 cilium status
 
-cilium status
+
     /¯¯\
  /¯¯\__/¯¯\    Cilium:             OK                                                                                                                                                                                                      
  \__/¯¯\__/    Operator:           OK
