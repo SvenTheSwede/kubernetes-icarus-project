@@ -4,8 +4,9 @@ The cluster build contained in this repo use AWS Identity provider.  AWS load ba
 
 First create a [AWS Policy](https://github.com/SvenTheSwede/kubernetes-icarus-project/edit/main/aws_lb_ctl/json/policy.json) 
 Create a AWS role  called aws-lb and assign the policy to it.
-Edit the trust policy using this [example](https://github.com/SvenTheSwede/kubernetes-icarus-project/edit/main/aws_lb_ctl/json/trust-policy.json) 
-Get the ARN of the new role
+
+You will need the ARN for your oidc provider.  Edit the trust policy using this [example](https://github.com/SvenTheSwede/kubernetes-icarus-project/edit/main/aws_lb_ctl/json/trust-policy.json)   
+
 ```
 aws iam get-role --role-name aws-lb
 ```
