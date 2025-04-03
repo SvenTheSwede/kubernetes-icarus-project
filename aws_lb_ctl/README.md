@@ -12,6 +12,11 @@ You will need the ARN for your oidc provider.  Edit the trust policy using this 
 aws iam get-role --role-name aws-lb
 ```
 Edit the helm chart values adding your own vpc-id and in the serviceAccount section add an annotation to link the service account to the IAM role.
+
+```
+aws iam get-role --role-name aws-lb
+```
+
 ```
 
 serviceAccount:
