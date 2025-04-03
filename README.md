@@ -116,6 +116,7 @@ kops update cluster--name $NAME --state $BUCKET --lifecycle-overrides InternetGa
 ```
 
 The cluster should now be ready to install AWS load balancer controller.  
+[AWS Loadbalancer Instructions](https://github.com/SvenTheSwede/kubernetes-icarus-project/tree/main/aws_lb_ctl)
 
 
 To delete the cluster
