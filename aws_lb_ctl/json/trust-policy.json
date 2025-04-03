@@ -1,0 +1,17 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::123456789999:oidc-provider/example-com-provider.s3.aws-region-1.amazonaws.com"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "example-com-provider.s3.aws-region-1.amazonaws.com:sub": "system:serviceaccount:kube-system:aws-lb-ctl-aws-load-balancer-controller"
+                }
+            }
+        }
+    ]
+}
