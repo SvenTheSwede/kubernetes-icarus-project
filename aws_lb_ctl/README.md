@@ -3,6 +3,7 @@
 The cluster build contained in this repo use AWS Identity provider.  AWS load balancer controller needs permissions to create ALBs, this guide helps you set it up using OIDC.
 
 First create a [AWS Policy](https://github.com/SvenTheSwede/kubernetes-icarus-project/edit/main/aws_lb_ctl/json/policy.json) 
+
 Create a AWS role  called aws-lb and assign the policy to it.
 
 You will need the ARN for your oidc provider.  Edit the trust policy using this [example](https://github.com/SvenTheSwede/kubernetes-icarus-project/edit/main/aws_lb_ctl/json/trust-policy.json)   
