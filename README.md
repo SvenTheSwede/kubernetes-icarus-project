@@ -145,15 +145,18 @@ i-0cdb59f0a8f9d734f   230m         11%      1720Mi          46%
 
 Once Cilium is installed and the cluster has validated 
 
+
+```
+kops edit cluster --name $NAME --state $BUCKET
+```
+Add this to the main cluster spec.
+
 ```
 podIdentityWebhook:
   enabled: true
 ```
-
+Run
 ```
-kops edit cluster --name $NAME --state $BUCKET
-
-
 kops update cluster--name $NAME --state $BUCKET --lifecycle-overrides InternetGateway=ExistsAndWarnIfChanges--yes
 ```
   
