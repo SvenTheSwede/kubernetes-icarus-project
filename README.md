@@ -115,6 +115,34 @@ kops edit cluster --name $NAME --state $BUCKET
 kops update cluster--name $NAME --state $BUCKET --lifecycle-overrides InternetGateway=ExistsAndWarnIfChanges--yes
 ```
 
+Validate the cluster is ready to progress.
+```
+  kops validate --name $NAME --state $BUCKET --wait 2m
+```
+You should eventually see  the cluster validated.
+```
+INSTANCE GROUPS
+NAME                            ROLE            MACHINETYPE     MIN     MAX     SUBNETS
+control-plane-eu-north-1a       ControlPlane    t3.medium       1       1       eu-north-1a
+control-plane-eu-north-1b       ControlPlane    t3.medium       1       1       eu-north-1b
+control-plane-eu-north-1c       ControlPlane    t3.medium       1       1       eu-north-1c
+nodes-eu-north-1a               Node            t3.medium       1       1       eu-north-1a
+nodes-eu-north-1b               Node            t3.medium       1       1       eu-north-1b
+nodes-eu-north-1c               Node            t3.medium       1       1       eu-north-1c
+
+NODE STATUS
+NAME                    ROLE            READY
+i-00509607b1a6462ff     node            True
+i-0096917881b3152e0     node            True
+i-059d9822ecc6cae2b     control-plane   True
+i-060400d1737b01ba2     node            True
+i-0bd5ae25d7a1626fa     control-plane   True
+i-0cdb59f0a8f9d734f     control-plane   True
+
+Your cluster kops.k8s.icarus-project.net is ready
+```
+
+
 The cluster should now be ready to install AWS load balancer controller.  
 [AWS Loadbalancer Instructions](https://github.com/SvenTheSwede/kubernetes-icarus-project/tree/main/aws_lb_ctl)
 
