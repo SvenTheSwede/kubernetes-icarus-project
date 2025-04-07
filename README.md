@@ -101,19 +101,6 @@ Errors:                cilium-envoy       cilium-envoy    6 pods of DaemonSet ci
 
 ```
 
-Once Cilium is install edit the cluster config and add
-
-```
-podIdentityWebhook:
-  enabled: true
-```
-
-```
-kops edit cluster --name $NAME --state $BUCKET
-
-
-kops update cluster--name $NAME --state $BUCKET --lifecycle-overrides InternetGateway=ExistsAndWarnIfChanges--yes
-```
 
 Validate the cluster is ready to progress.
 ```
@@ -142,9 +129,35 @@ i-0cdb59f0a8f9d734f     control-plane   True
 Your cluster kops.k8s.icarus-project.net is ready
 ```
 
+The easiest and simplest way to confirm if everything is working as it should be is to run.  
+```
+kubectl top nodes
 
-The cluster should now be ready to install AWS load balancer controller.  
-[AWS Loadbalancer Instructions](https://github.com/SvenTheSwede/kubernetes-icarus-project/tree/main/aws_lb_ctl)
+NAME                  CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+i-00509607b1a6462ff   72m          3%       819Mi           21%         
+i-0096917881b3152e0   63m          3%       838Mi           22%         
+i-059d9822ecc6cae2b   179m         8%       1527Mi          40%         
+i-060400d1737b01ba2   103m         5%       803Mi           21%         
+i-0bd5ae25d7a1626fa   267m         13%      1824Mi          48%         
+i-0cdb59f0a8f9d734f   230m         11%      1720Mi          46%
+
+```
+
+Once Cilium is installed and the cluster has validated 
+
+```
+podIdentityWebhook:
+  enabled: true
+```
+
+```
+kops edit cluster --name $NAME --state $BUCKET
+
+
+kops update cluster--name $NAME --state $BUCKET --lifecycle-overrides InternetGateway=ExistsAndWarnIfChanges--yes
+```
+  
+The cluster is now finished. 
 
 
 To delete the cluster
